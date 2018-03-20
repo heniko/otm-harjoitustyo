@@ -6,6 +6,6 @@
 
 ## Viikko1
 
-[Komentorivi.txt](https://github.com/heniko/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+[Komentorivi](https://github.com/heniko/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-[gitlog.txt](https://github.com/heniko/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[gitlog](https://github.com/heniko/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
