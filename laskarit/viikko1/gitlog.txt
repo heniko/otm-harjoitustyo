@@ -1,0 +1,103 @@
+commit aecd6c3ed2b58199a646bb7fb2352fae0e29e501
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:44:54 2018 +0200
+
+    File1 file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 6ff96f5a5d443153d156b7283eab6888a23b2552
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:38:25 2018 +0200
+
+    Tiedostoja ja tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0b0fbb184a95bf50cc521d2a6c6db1a1df57ebbc
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:30:44 2018 +0200
+
+    git add -p
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 8ddc99ea1680710694a892790100b0a55652153c
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:28:06 2018 +0200
+
+    Uudelleennimetty
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 359a6f5cd76dd526384601a87d4f25b64fa7e7f8
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:26:17 2018 +0200
+
+    Toinen poistettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2006cd2845150572dec9a1186cbcf90f5b64bff2
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:25:19 2018 +0200
+
+    tekstiä poistettu
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 37c4d9139a24c79aa3318375ed43eb293453bd0d
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:24:16 2018 +0200
+
+    Tekstiä lisätty
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 33869452326b86db4d2df9e299e01de19d791b90
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:17:50 2018 +0200
+
+    stuff ja tiedosto
+
+ stuff/tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2529e9ce9ce01c782cac7a7fab447f34159192f5
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:16:11 2018 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 9370e5b61fa9c2304be31de942c6af16c65c2cc2
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:14:24 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 071a543a038af0c4b4255762039a3a437cb185b1
+Author: Niko Hernesniemi <niko.hernesniemi@helsinki.fi>
+Date:   Tue Mar 20 20:12:22 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
