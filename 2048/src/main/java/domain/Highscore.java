@@ -13,12 +13,12 @@ public class Highscore {
         this.name = name;
         this.date = date;
     }
-    
+
     public Highscore(int score, Date date) {
         this.score = score;
         this.date = date;
     }
-    
+
     public Date getDate() {
         return date;
     }
