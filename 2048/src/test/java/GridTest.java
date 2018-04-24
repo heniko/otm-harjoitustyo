@@ -1,6 +1,8 @@
 
 import domain.Direction;
 import domain.Grid;
+import domain.Position;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -185,6 +187,28 @@ public class GridTest {
         g.moveTiles(Direction.LEFT);
         assertEquals(intArrayToString(result), intArrayToString(g.getGrid()));
     }
+    
+    @Test
+    public void multipleMovesTest() {
+        g = new Grid(4);
+        int grid[][] = {
+            {4, 2, 0, 2},
+            {0, 8, 0, 0},
+            {0, 0, 0, 0},
+            {16, 0, 0, 0}};
+        int result[][] = {
+            {32, 0, 0, 0},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0}};
+        g.setGrid(grid);
+        g.moveTiles(Direction.LEFT);
+        g.moveTiles(Direction.LEFT);
+        g.moveTiles(Direction.DOWN);
+        g.moveTiles(Direction.RIGHT);
+        g.moveTiles(Direction.UP);
+        assertEquals(intArrayToString(result), intArrayToString(g.getGrid()));
+    }
 
     @Test
     public void scoreTest1() {
@@ -236,5 +260,40 @@ public class GridTest {
         g.setGrid(grid);
         g.moveTiles(Direction.LEFT);
         assertEquals(false, g.gameEnded());
+    }
+    
+    @Test
+    public void emptyTilesTest1() {
+        g = new Grid(4);
+        List<Position> empty = g.emptyTiles();
+        assertEquals(16, empty.size());
+    }
+    
+    @Test
+    public void emptyTilesTest2() {
+        g = new Grid(4);
+        int grid[][] = {
+            {0, 0, 0, 0},
+            {0, 0, 2, 0},
+            {4, 0, 0, 0},
+            {0, 2, 0, 0}};
+        g.setGrid(grid);
+        List<Position> empty = g.emptyTiles();
+        assertEquals(13, empty.size());
+    }
+    
+    @Test
+    public void addNewTileTest() {
+        g = new Grid(4);
+        g.addNewTile();
+        int grid[][] = g.getGrid();
+        
+        boolean tileWasAdded = false;
+        for(int y = 0; y < 4; y++) {
+            for(int x = 0; x < 4; x++) {
+                if (grid[y][x] != 0) tileWasAdded = true;
+            }
+        }
+        assertEquals(true, tileWasAdded);
     }
 }
