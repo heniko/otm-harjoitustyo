@@ -2,3 +2,4 @@
 	2h: Database, highscore, tests
 24.04
     3h: Grid+grid logic
+    2h: Grid tests+changes

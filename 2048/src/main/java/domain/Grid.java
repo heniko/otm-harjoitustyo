@@ -19,9 +19,11 @@ public class Grid {
         this.mergeable = new boolean[size][size];
         this.size = size;
         this.score = 0;
+        initializeGrid();
+        initializeMergeable();
     }
 
-    private void initializeGrid() {
+    public void initializeGrid() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 grid[i][j] = 0;
@@ -29,7 +31,7 @@ public class Grid {
         }
     }
 
-    private void initializeMergeable() {
+    public void initializeMergeable() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 mergeable[i][j] = true;
@@ -39,7 +41,7 @@ public class Grid {
 
     //Rotating grid clockwise
     //Rotating is done so only one method for moving tiles is needed
-    private void rotateGrid() {
+    public void rotateGrid() {
         int newGrid[][] = new int[size][size];
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
@@ -50,13 +52,13 @@ public class Grid {
     }
 
     //Rotating grid multiple times
-    private void rotateNTimes(int n) {
+    public void rotateNTimes(int n) {
         for (int i = 0; i < n; i++) {
             rotateGrid();
         }
     }
 
-    private int[][] copyGrid() {
+    public int[][] copyGrid() {
         int copy[][] = new int[size][size];
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
@@ -68,7 +70,7 @@ public class Grid {
 
     //Moving tiles to left
     //Returns false if grid didn't change
-    private boolean moveTiles() {
+    public boolean moveTilesLeft() {
         int beforeMoves[][] = copyGrid();
 
         for (int y = 0; y < size; y++) {
@@ -77,7 +79,7 @@ public class Grid {
                     continue;//No need for moving and merging 0's
                 }
                 int xPos = x;//For moving individual tile left
-                while (xPos < size - 2) {
+                while (xPos < size - 1) {
                     if (grid[y][xPos + 1] == 0) {//Moving left if tile on the left is 0
                         grid[y][xPos + 1] = grid[y][xPos];
                         grid[y][xPos] = 0;
@@ -94,7 +96,7 @@ public class Grid {
     }
 
     //Merging left if possible and adding scores
-    private void mergeIfPossible(Position pos) {
+    public void mergeIfPossible(Position pos) {
         if (grid[pos.getY()][pos.getX()] == grid[pos.getY()][pos.getX() + 1] && mergeable[pos.getY()][pos.getX() + 1] == true) {
             grid[pos.getY()][pos.getX() + 1] = grid[pos.getY()][pos.getX() + 1] * 2;
             grid[pos.getY()][pos.getX()] = 0;
@@ -103,7 +105,7 @@ public class Grid {
         }
     }
 
-    private boolean gridChanged(int[][] beforeMoves) {
+    public boolean gridChanged(int[][] beforeMoves) {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 //True if move happened
@@ -116,7 +118,7 @@ public class Grid {
         return false;
     }
 
-    private List<Position> emptyTiles() {
+    public List<Position> emptyTiles() {
         List<Position> emptyTiles = new ArrayList<>();
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
@@ -138,5 +140,50 @@ public class Grid {
         shuffle(emptyTiles);
         int newTile = random.nextDouble() < 0.9 ? 2 : 4;
         grid[emptyTiles.get(0).getY()][emptyTiles.get(0).getX()] = newTile;
+    }
+
+    public boolean moveTiles(Direction direction) {
+        //Rotating grid for moving tiles
+        if (direction == Direction.DOWN) {
+            rotateNTimes(3);
+        }
+        if (direction == Direction.UP) {
+            rotateNTimes(1);
+        }
+        if (direction == Direction.RIGHT) {
+            rotateNTimes(2);
+        }
+
+        initializeMergeable();
+        boolean changesHappened = moveTilesLeft();
+
+        //Rotating grid back to original position
+        if (direction == Direction.DOWN) {
+            rotateNTimes(1);
+        }
+        if (direction == Direction.UP) {
+            rotateNTimes(3);
+        }
+        if (direction == Direction.RIGHT) {
+            rotateNTimes(2);
+        }
+        return changesHappened;
+    }
+
+    public int[][] getGrid() {
+        return grid;
+    }
+    //For tests
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
+    }
+    
+    public boolean gameEnded() {
+        Grid g = new Grid(4);
+        g.setGrid(copyGrid());
+        for(Direction d : Direction.values()) {
+            if(g.moveTiles(d) == true) return false;
+        }
+        return true;
     }
 }
