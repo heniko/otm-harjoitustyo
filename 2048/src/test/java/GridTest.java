@@ -45,7 +45,7 @@ public class GridTest {
     }
 
     @Test
-    public void moveLeft1() {
+    public void moveRight1() {
         g = new Grid(4);
         int grid[][] = {
             {0, 0, 2, 0},
@@ -63,7 +63,7 @@ public class GridTest {
     }
 
     @Test
-    public void moveLeft2() {
+    public void moveRight2() {
         g = new Grid(4);
         int grid[][] = {
             {0, 2, 2, 0},
@@ -81,7 +81,7 @@ public class GridTest {
     }
 
     @Test
-    public void moveLeft3() {
+    public void moveRight3() {
         g = new Grid(4);
         int grid[][] = {
             {2, 2, 2, 2},
@@ -99,7 +99,7 @@ public class GridTest {
     }
 
     @Test
-    public void moveLeft4() {
+    public void moveRight4() {
         g = new Grid(4);
         int grid[][] = {
             {4, 2, 0, 0},
@@ -125,7 +125,7 @@ public class GridTest {
             {0, 0, 0, 0},
             {0, 0, 0, 0}};
         int result[][] = {
-            {4, 0, 0, 0},
+            {0, 0, 0, 4},
             {0, 0, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0}};
@@ -179,7 +179,7 @@ public class GridTest {
             {0, 0, 0, 0},
             {0, 0, 0, 0}};
         int result[][] = {
-            {0, 0, 4, 2},
+            {4, 2, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0}};
@@ -197,7 +197,7 @@ public class GridTest {
             {0, 0, 0, 0},
             {16, 0, 0, 0}};
         int result[][] = {
-            {32, 0, 0, 0},
+            {0, 0, 0, 32},
             {0, 0, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0}};

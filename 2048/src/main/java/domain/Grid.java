@@ -42,13 +42,13 @@ public class Grid {
     //Rotating grid clockwise
     //Rotating is done so only one method for moving tiles is needed
     public void rotateGrid() {
+        int oldGrid[][] = copyGrid();
         int newGrid[][] = new int[size][size];
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
-                newGrid[y][x] = grid[size - 1 - x][y];
+                grid[y][x] = oldGrid[size - 1 - x][y];
             }
         }
-        this.grid = newGrid;
     }
 
     //Rotating grid multiple times
@@ -68,7 +68,7 @@ public class Grid {
         return copy;
     }
 
-    //Moving tiles to left
+    //Moving tiles to right
     //Returns false if grid didn't change
     public boolean moveTilesLeft() {
         int beforeMoves[][] = copyGrid();
@@ -150,7 +150,7 @@ public class Grid {
         if (direction == Direction.UP) {
             rotateNTimes(1);
         }
-        if (direction == Direction.RIGHT) {
+        if (direction == Direction.LEFT) {
             rotateNTimes(2);
         }
 
@@ -164,7 +164,7 @@ public class Grid {
         if (direction == Direction.UP) {
             rotateNTimes(3);
         }
-        if (direction == Direction.RIGHT) {
+        if (direction == Direction.LEFT) {
             rotateNTimes(2);
         }
         return changesHappened;
