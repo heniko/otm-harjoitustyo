@@ -10,15 +10,19 @@ public class GameLogic {
     private Grid grid;
     private boolean gameRunning;
 
-    public GameLogic() {
-        this.grid = new Grid(4);
+    public GameLogic(int[][] board) {
+        this.grid = new Grid(4, board);
         //Two tiles are added in the beginning
-        grid.addNewTile();
-        grid.addNewTile();
         gameRunning = true;
     }
+    
+    public void initializeGame() {
+        grid.initializeGrid();
+        grid.addNewTile();
+        grid.addNewTile();
+    }
 
-    public boolean move(KeyEvent event) throws Exception {
+    public boolean move(KeyEvent event) {
         System.out.println("Key pressed! " + event.getCode());
         if (event.getCode() == KeyCode.ESCAPE) {
             gameRunning = false;
@@ -30,8 +34,6 @@ public class GameLogic {
             gameRunning = move(Direction.UP);
         } else if (event.getCode() == KeyCode.DOWN) {
             gameRunning = move(Direction.DOWN);
-        } else {
-            throw new Exception("Pressed key was not valid");
         }
         return false;
     }

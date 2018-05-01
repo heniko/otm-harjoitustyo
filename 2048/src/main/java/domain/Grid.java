@@ -13,13 +13,12 @@ public class Grid {
     private boolean mergeable[][];
     private final int size;
 
-    public Grid(int size) {
+    public Grid(int size, int[][] board) {
         this.random = new Random();
-        this.grid = new int[size][size];
+        this.grid = board;
         this.mergeable = new boolean[size][size];
         this.size = size;
         this.score = 0;
-        initializeGrid();
         initializeMergeable();
     }
 
@@ -179,8 +178,7 @@ public class Grid {
     }
     
     public boolean gameEnded() {
-        Grid g = new Grid(4);
-        g.setGrid(copyGrid());
+        Grid g = new Grid(4, copyGrid());
         for(Direction d : Direction.values()) {
             if(g.moveTiles(d) == true) return false;
         }
