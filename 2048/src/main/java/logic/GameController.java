@@ -11,12 +11,12 @@ public class GameController {
 
     public GameController(int[][] board) {
         this.grid = new Grid(4, board);
-        //Two tiles are added in the beginning
         gameRunning = true;
     }
-    
+
     public void initializeGame() {
         grid.initializeGrid();
+        //Two tiles are added in the beginning
         grid.addNewTile();
         grid.addNewTile();
         gameRunning = true;
@@ -48,7 +48,7 @@ public class GameController {
         if (moveHappened) {
             grid.addNewTile();
         }
-        return !grid.gameEnded();
+        return !grid.gameEnded();//Game ended returns true if game ended so game running is the opposite
     }
 
     public int[][] getGrid() {

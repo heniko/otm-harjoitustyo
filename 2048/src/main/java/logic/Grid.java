@@ -44,7 +44,6 @@ public class Grid {
     //Rotating is done so only one method for moving tiles is needed
     public void rotateGrid() {
         int oldGrid[][] = copyGrid();
-        int newGrid[][] = new int[size][size];
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 grid[y][x] = oldGrid[size - 1 - x][y];
@@ -174,15 +173,18 @@ public class Grid {
     public int[][] getGrid() {
         return grid;
     }
+
     //For tests
     public void setGrid(int[][] grid) {
         this.grid = grid;
     }
-    
+
     public boolean gameEnded() {
         Grid g = new Grid(4, copyGrid());
-        for(Direction d : Direction.values()) {
-            if(g.moveTiles(d) == true) return false;
+        for (Direction d : Direction.values()) {
+            if (g.moveTiles(d) == true) {
+                return false;
+            }
         }
         return true;
     }
