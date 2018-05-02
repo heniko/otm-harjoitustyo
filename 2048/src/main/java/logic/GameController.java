@@ -1,16 +1,15 @@
 package logic;
 
 import domain.Direction;
-import domain.Grid;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class GameLogic {
+public class GameController {
 
     private Grid grid;
     private boolean gameRunning;
 
-    public GameLogic(int[][] board) {
+    public GameController(int[][] board) {
         this.grid = new Grid(4, board);
         //Two tiles are added in the beginning
         gameRunning = true;
@@ -20,6 +19,7 @@ public class GameLogic {
         grid.initializeGrid();
         grid.addNewTile();
         grid.addNewTile();
+        gameRunning = true;
     }
 
     public boolean move(KeyEvent event) {
@@ -38,7 +38,7 @@ public class GameLogic {
         return false;
     }
 
-    public boolean isGameRunning() {
+    public boolean gameIsRunning() {
         return gameRunning;
     }
 
@@ -48,7 +48,7 @@ public class GameLogic {
         if (moveHappened) {
             grid.addNewTile();
         }
-        return grid.gameEnded();
+        return !grid.gameEnded();
     }
 
     public int[][] getGrid() {

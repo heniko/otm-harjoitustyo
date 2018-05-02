@@ -1,5 +1,7 @@
-package domain;
+package logic;
 
+import domain.Direction;
+import domain.Position;
 import java.util.ArrayList;
 import static java.util.Collections.shuffle;
 import java.util.List;

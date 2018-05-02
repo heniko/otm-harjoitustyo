@@ -6,18 +6,20 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import logic.GameLogic;
+import logic.GameController;
 
 public class GameUi extends Application {
 
     private int[][] grid;
-    private GameLogic gameLogic;
+    private GameController gameController;
     private GridPane gameGridPane;
     private StringProperty[][] tileStyles;
     private IntegerProperty[][] tileValues;
@@ -29,21 +31,37 @@ public class GameUi extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         grid = new int[4][4];
-        gameLogic = new GameLogic(grid);
-        gameLogic.initializeGame();
+        gameController = new GameController(grid);
+        gameController.initializeGame();
         gameGridPane = new GridPane();
         tileValues = new IntegerProperty[4][4];
         tileStyles = new StringProperty[4][4];
-        
+
         Scene game;
+        Scene menu;
+        //Menu elements
+        Button startGameButton = new Button("New game");
+        Button openHighscoreButton = new Button("Highscores");
+        GridPane menuPane = new GridPane();
+        //Labels for each game tile
         Label[][] labels = new Label[4][4];
-        
+
         //Styles for gameGridPane
         gameGridPane.setStyle("-fx-background-color: #a39284;");
         gameGridPane.setHgap(10);
         gameGridPane.setVgap(10);
         gameGridPane.setPrefSize(500, 500);
         gameGridPane.setAlignment(Pos.CENTER);
+
+        //Menu style
+        menuPane.setStyle("-fx-background-color: #a39284;");
+        menuPane.setHgap(100);
+        menuPane.setVgap(100);
+        menuPane.setPrefSize(500, 500);
+        menuPane.setAlignment(Pos.CENTER);
+        menuPane.add(startGameButton, 0, 0);
+        menuPane.add(openHighscoreButton, 0, 1);
+        menu = new Scene(menuPane);
 
         //Initializing tile values and styles
         for (int y = 0; y < 4; y++) {
@@ -67,20 +85,31 @@ public class GameUi extends Application {
             }
         }
 
-        //Listeners and handlers
-        EventHandler<KeyEvent> moveHandler = event -> {
-            gameLogic.move(event);
-            updateGameGrid();
-        };
-        
         //Game view
         game = new Scene(gameGridPane);
-        game.addEventFilter(KeyEvent.KEY_PRESSED, moveHandler);
         //Main menu view
-        
+
         //Highscore view
-        
-        stage.setScene(game);
+        //Listeners and handlers
+        EventHandler<KeyEvent> moveHandler = event -> {
+            gameController.move(event);
+            if (gameController.gameIsRunning()) {
+                updateGameGrid();
+            } else {
+                stage.setScene(menu);
+            }
+        };
+        game.addEventFilter(KeyEvent.KEY_PRESSED, moveHandler);
+
+        startGameButton.setOnAction((event) -> {
+            stage.setScene(game);
+            gameController.initializeGame();
+            updateGameGrid();
+        });
+
+        //Main menu view
+        //Highscore view
+        stage.setScene(menu);
         stage.show();
     }
 
