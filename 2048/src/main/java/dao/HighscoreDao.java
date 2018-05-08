@@ -28,7 +28,7 @@ public class HighscoreDao {
     //Tuloksien lisäys
     public void addNew(Highscore score) throws SQLException {
         Connection conn = db.getConnection();
-        PreparedStatement s = conn.prepareStatement("INSERT INTO highscores (score, name, date) VALUE (?, ?, ?)");
+        PreparedStatement s = conn.prepareStatement("INSERT INTO highscores (score, name, date) VALUES (?, ?, ?)");
         s.setInt(1, score.getScore());
         s.setString(2, score.getName());
         s.setDate(3, score.getDate());
@@ -42,7 +42,7 @@ public class HighscoreDao {
         List<Highscore> scores = new ArrayList<>();
 
         Connection conn = db.getConnection();
-        PreparedStatement s = conn.prepareStatement("SELECT TOP 20 FROM highscores ORDER BY score");
+        PreparedStatement s = conn.prepareStatement("SELECT score, name, date FROM highscores ORDER BY -score LIMIT 20");
         ResultSet rs = s.executeQuery();
 
         while (rs.next()) {

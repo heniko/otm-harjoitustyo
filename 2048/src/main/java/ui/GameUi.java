@@ -5,6 +5,8 @@ import domain.Database;
 import domain.Highscore;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -19,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.GameController;
 
@@ -119,6 +122,9 @@ public class GameUi extends Application {
             gameController.initializeGame();
             updateGameGrid();
         });
+        openHighscoreButton.setOnAction((event) -> {
+            showTop20();
+        });
 
         //Main menu view
         //Highscore view
@@ -148,7 +154,7 @@ public class GameUi extends Application {
         addHighscore.getChildren().add(showScore);
         addHighscore.getChildren().add(userName);
         addHighscore.getChildren().add(addButton);
-        
+
         addButton.setOnAction((event) -> {
             try {
                 dao.addNew(new Highscore(score, userName.getText(), date));
@@ -157,13 +163,66 @@ public class GameUi extends Application {
                 System.out.println(e.getMessage());
             }
         });
-        
+
         Scene addScoreScene = new Scene(addHighscore);
         addScoreStage.setScene(addScoreScene);
         addScoreStage.show();
     }
-    
+
     public void showTop20() {
-        
+        //Style for lines is used to make highscores easier to read
+        String[] styles = {
+            "-fx-background-color: #282219;",
+            "-fx-background-color: #473c2c;"};
+        VBox highscoreLines = new VBox();
+        //highscoreLines styles
+        highscoreLines.setStyle("-fx-background-color: #a39284;");
+        highscoreLines.setPrefSize(400, 630);
+        //Titles for highscoreLines
+        HBox titles = new HBox();
+        Label nameTitle = new Label("Name");
+        Label dateTitle = new Label("Date");
+        Label scoreTitle = new Label("Score");
+        Label posTitle = new Label("");
+        posTitle.setPrefSize(100, 30);
+        nameTitle.setPrefSize(100, 30);
+        dateTitle.setPrefSize(100, 30);
+        scoreTitle.setPrefSize(100, 30);
+        titles.getChildren().addAll(posTitle, nameTitle, scoreTitle, dateTitle);
+        highscoreLines.getChildren().add(titles);
+        //Getting top 20 scores from database
+        List<Highscore> lines = new ArrayList<>();
+        try {
+            lines = dao.getTop20();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //Adding each highscore
+        int position = 1;
+        for (Highscore line : lines) {
+            HBox newLine = new HBox();
+            Label name = new Label(line.getName());
+            Label date = new Label(line.getDate().toString());
+            Label score = new Label(line.getScore() + "");
+            Label pos = new Label(position + "");
+            //Styles for labels and hbox. Alteration is based on position of the score
+            newLine.setStyle(styles[position % 2]);
+            name.setStyle(styles[position % 2]);
+            date.setStyle(styles[position % 2]);
+            score.setStyle(styles[position % 2]);
+            pos.setStyle(styles[position % 2]);
+            name.setPrefSize(100, 30);
+            date.setPrefSize(100, 30);
+            score.setPrefSize(100, 30);
+            pos.setPrefSize(100, 30);
+            //Adding line to highscore
+            newLine.getChildren().addAll(pos, name, score, date);
+            highscoreLines.getChildren().add(newLine);
+            position++;
+        }
+        Scene s = new Scene(highscoreLines);
+        Stage showHighscore = new Stage();
+        showHighscore.setScene(s);
+        showHighscore.show();
     }
 }

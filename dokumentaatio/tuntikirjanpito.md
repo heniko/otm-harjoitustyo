@@ -9,3 +9,7 @@
     5h: Game UI
 02.05
     1h: Main menu added, Code refactoring, Grid tests updated for new constructor
+08.05
+    2h: Working highscore
+    
+Yht: 18h
