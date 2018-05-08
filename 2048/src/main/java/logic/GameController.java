@@ -54,4 +54,8 @@ public class GameController {
     public int[][] getGrid() {
         return grid.getGrid();
     }
+    
+    public int getScore() {
+        return grid.getScore();
+    }
 }

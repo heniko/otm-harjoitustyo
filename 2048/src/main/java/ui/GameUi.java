@@ -1,18 +1,24 @@
 package ui;
 
+import dao.HighscoreDao;
+import domain.Database;
+import domain.Highscore;
+import java.sql.Date;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import logic.GameController;
 
@@ -23,6 +29,8 @@ public class GameUi extends Application {
     private GridPane gameGridPane;
     private StringProperty[][] tileStyles;
     private IntegerProperty[][] tileValues;
+    private Database db;
+    private HighscoreDao dao;
 
     public static void main(String[] args) {
         launch(GameUi.class);
@@ -30,6 +38,10 @@ public class GameUi extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        db = new Database("jdbc:sqlite:highscores.db");
+        dao = new HighscoreDao(db);
+        dao.createDatabaseAndTableIfNotExists();
+
         grid = new int[4][4];
         gameController = new GameController(grid);
         gameController.initializeGame();
@@ -96,6 +108,7 @@ public class GameUi extends Application {
             if (gameController.gameIsRunning()) {
                 updateGameGrid();
             } else {
+                newHighscore(gameController.getScore());
                 stage.setScene(menu);
             }
         };
@@ -122,5 +135,35 @@ public class GameUi extends Application {
                 tileStyles[y][x].set(ts.getStyle(grid[y][x]));
             }
         }
+    }
+
+    //Creating new stage for adding score
+    public void newHighscore(int score) {
+        Date date = new Date(System.currentTimeMillis());
+        Stage addScoreStage = new Stage();
+        Label showScore = new Label("Score: " + score);
+        TextField userName = new TextField();
+        Button addButton = new Button("Add score!");
+        HBox addHighscore = new HBox();
+        addHighscore.getChildren().add(showScore);
+        addHighscore.getChildren().add(userName);
+        addHighscore.getChildren().add(addButton);
+        
+        addButton.setOnAction((event) -> {
+            try {
+                dao.addNew(new Highscore(score, userName.getText(), date));
+                addScoreStage.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        });
+        
+        Scene addScoreScene = new Scene(addHighscore);
+        addScoreStage.setScene(addScoreScene);
+        addScoreStage.show();
+    }
+    
+    public void showTop20() {
+        
     }
 }

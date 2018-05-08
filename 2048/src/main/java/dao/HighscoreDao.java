@@ -13,6 +13,17 @@ public class HighscoreDao {
     public HighscoreDao(Database db) {
         this.db = db;
     }
+    
+    public void createDatabaseAndTableIfNotExists() throws SQLException {
+        String sqlCreateTable = "CREATE TABLE IF NOT EXISTS highscores(id integer PRIMARY KEY, score integer, name varchar(30), date date)";
+        try (Connection conn = db.getConnection()) {
+            PreparedStatement s = conn.prepareStatement(sqlCreateTable);
+            s.execute();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     //Tuloksien lisäys
     public void addNew(Highscore score) throws SQLException {
