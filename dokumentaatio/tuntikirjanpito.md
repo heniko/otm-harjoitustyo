@@ -11,5 +11,6 @@
     1h: Main menu added, Code refactoring, Grid tests updated for new constructor
 08.05
     2h: Working highscore
+    1h: Adding highscores after game
     
-Yht: 18h
+Yht: 19h

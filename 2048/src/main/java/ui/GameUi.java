@@ -111,8 +111,8 @@ public class GameUi extends Application {
             if (gameController.gameIsRunning()) {
                 updateGameGrid();
             } else {
-                newHighscore(gameController.getScore());
                 stage.setScene(menu);
+                newHighscore(gameController.getScore());
             }
         };
         game.addEventFilter(KeyEvent.KEY_PRESSED, moveHandler);
@@ -129,6 +129,7 @@ public class GameUi extends Application {
         //Main menu view
         //Highscore view
         stage.setScene(menu);
+        stage.setTitle("2048");
         stage.show();
     }
 
@@ -148,19 +149,33 @@ public class GameUi extends Application {
         Date date = new Date(System.currentTimeMillis());
         Stage addScoreStage = new Stage();
         Label showScore = new Label("Score: " + score);
+        Label showDate = new Label("Date: " + date.toString());
+        Label usernameError = new Label("");
         TextField userName = new TextField();
         Button addButton = new Button("Add score!");
-        HBox addHighscore = new HBox();
-        addHighscore.getChildren().add(showScore);
-        addHighscore.getChildren().add(userName);
-        addHighscore.getChildren().add(addButton);
+        HBox userNameHbox = new HBox();
+        userNameHbox.getChildren().addAll(userName, usernameError);
+        VBox addHighscore = new VBox();
+        //Styles
+        showScore.setPrefSize(200,50);
+        showDate.setPrefSize(200, 50);
+        userNameHbox.setPrefSize(400, 50);
+        addHighscore.setPrefSize(400, 200);
+        addHighscore.setStyle("-fx-background-color: #a39284;");
+        addScoreStage.setTitle("Add highscore");
+        
+        addHighscore.getChildren().addAll(showDate, showScore, userNameHbox, addButton);
 
         addButton.setOnAction((event) -> {
-            try {
-                dao.addNew(new Highscore(score, userName.getText(), date));
-                addScoreStage.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+            if (userName.getText().length() == 0 || userName.getText().length() > 30) {
+                usernameError.setText("Username must be 1-30 characters long!");
+            } else {
+                try {
+                    dao.addNew(new Highscore(score, userName.getText(), date));
+                    addScoreStage.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         });
 
@@ -223,6 +238,7 @@ public class GameUi extends Application {
         Scene s = new Scene(highscoreLines);
         Stage showHighscore = new Stage();
         showHighscore.setScene(s);
+        showHighscore.setTitle("Highscores");
         showHighscore.show();
     }
 }
