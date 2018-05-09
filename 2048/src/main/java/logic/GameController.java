@@ -23,7 +23,6 @@ public class GameController {
     }
 
     public boolean move(KeyEvent event) {
-        System.out.println("Key pressed! " + event.getCode());
         if (event.getCode() == KeyCode.ESCAPE) {
             gameRunning = false;
         } else if (event.getCode() == KeyCode.RIGHT) {
