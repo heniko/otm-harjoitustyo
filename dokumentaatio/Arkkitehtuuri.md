@@ -4,7 +4,7 @@
 
 Tietojen pysyväistallennukseen käytetään sqlite3-tietokantaa, joka luodaan aina tarvittaessa ohjelman käynnistyksen yhteydessä. Tietokannassa on yksi taulu huipputulosten tallentamista varten.
 
-<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/tietokanta.png" width="400">
+<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/tietokanta.png" width="200">
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
