@@ -5,7 +5,7 @@
 Pelin voi käynnistää tuplaklikkaamalla .jar-tiedostoa tai komentorivin kautta komennolla:
 
 ```
-2048-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar 2048-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 ## Main menu
