@@ -18,4 +18,7 @@
     2h: Working highscore
     1h: Adding highscores after game
     
-Yht: 19h
+11.05
+    8h: Dokumentation, small fixes in code
+    
+Yht: 27h
