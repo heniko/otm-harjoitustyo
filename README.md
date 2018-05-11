@@ -4,7 +4,7 @@
 
 [Käyttöohje](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
-[Vaativuusmäärittely](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/vaarivuusmaarittely.md)
+[Vaativuusmäärittely](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/vaativuusmaarittely.md)
 
 [Arkkitehtuurikuvaus](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/Arkkitehtuuri.md)
 
