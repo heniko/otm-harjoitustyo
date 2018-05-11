@@ -22,7 +22,7 @@ Domain-pakkauksen luokille  highscore ja position on luotu testejä. Database ja
 
 Käyttöliittymää lukuunottamatta rivikattavuus on 70% ja haarautumakattavuus 71%.
 
-<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/testikattavuus.png" width="400">
+<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/testikattavuus.png" width="600">
 
 ## Järjestelmätestaus
 
