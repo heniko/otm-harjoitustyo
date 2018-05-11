@@ -3,10 +3,15 @@
 ## Dokumentaatio
 
 [Käyttöohje](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 [Vaativuusmäärittely](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/vaarivuusmaarittely.md)
+
 [Arkkitehtuurikuvaus](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 [Testausdokumentti](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 [Työaikakirjanpito](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
 
 ## Releaset
 
