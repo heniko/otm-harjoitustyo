@@ -41,3 +41,5 @@ Kaikki käyttäjät ovat sovelluksessa normaaleja käyttäjiä. Sovellukseen ei 
 -Verkossa toimiva tietokanta, jonka avulla käyttäjä voi verrata tuloksiaan muiden saavuttamiin tuloksiin
 
 -Tietokantaan tallennetaan myös tuloksia, jotka eivät kuulu top20. Koska tietokantaan tallennetaan myös aika, jolloin tulokset on saatu voitaisiin tästä datasta näyttää käyttäjälle useanlaisia tilastoja kuten mm. viivakaavio kehityksestä ajan kuluessa tai pylväskaavio keskivertotuloksesta eri kellonaikoina.
+
+-Harjoituspelimuoto undo move-näppäimellä
