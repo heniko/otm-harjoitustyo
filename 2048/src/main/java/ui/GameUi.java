@@ -157,13 +157,13 @@ public class GameUi extends Application {
         userNameHbox.getChildren().addAll(userName, usernameError);
         VBox addHighscore = new VBox();
         //Styles
-        showScore.setPrefSize(200,50);
+        showScore.setPrefSize(200, 50);
         showDate.setPrefSize(200, 50);
         userNameHbox.setPrefSize(400, 50);
         addHighscore.setPrefSize(400, 200);
         addHighscore.setStyle("-fx-background-color: #a39284;");
         addScoreStage.setTitle("Add highscore");
-        
+
         addHighscore.getChildren().addAll(showDate, showScore, userNameHbox, addButton);
 
         addButton.setOnAction((event) -> {

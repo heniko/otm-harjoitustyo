@@ -47,7 +47,7 @@ public class GameController {
         if (moveHappened) {
             grid.addNewTile();
         }
-        return !grid.gameEnded();//Game ended returns true if game ended so game running is the opposite
+        return !grid.gameEnded(); //Game ended returns true if game ended so game running is the opposite
     }
 
     public int[][] getGrid() {

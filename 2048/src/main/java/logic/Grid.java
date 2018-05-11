@@ -76,16 +76,16 @@ public class Grid {
         for (int y = 0; y < size; y++) {
             for (int x = size - 2; x >= 0; x--) {
                 if (grid[y][x] == 0) {
-                    continue;//No need for moving and merging 0's
+                    continue; //No need for moving and merging 0's
                 }
-                int xPos = x;//For moving individual tile left
+                int xPos = x; //For moving individual tile left
                 while (xPos < size - 1) {
-                    if (grid[y][xPos + 1] == 0) {//Moving left if tile on the left is 0
+                    if (grid[y][xPos + 1] == 0) { //Moving left if tile on the left is 0
                         grid[y][xPos + 1] = grid[y][xPos];
                         grid[y][xPos] = 0;
-                    } else {//Trying to merge if tile on the left is not 0
+                    } else { //Trying to merge if tile on the left is not 0
                         mergeIfPossible(new Position(xPos, y));
-                        break;//No moves can be made for this tile after merging
+                        break; //No moves can be made for this tile after merging
                     }
                     xPos++;
                 }
