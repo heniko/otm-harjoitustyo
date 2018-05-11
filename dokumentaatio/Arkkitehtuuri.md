@@ -10,3 +10,4 @@ Käyttöliittymän koodi on osittain epäselvää. Koodia voisi jakaa useampiin 
 
 Jos tietokannan käytössä tapahtuu jotain olettamatonta, ohjelma ei osaa luoda uutta kesken ajon. Ongelman voi aiheuttaa esim. Tietokannan poistaminen ajon aikana. Pisteiden lisäysvaiheessa käyttäjälle ilmoitetaan tapahtuneesta virheestä ja highscorejen avaus ei onnistu. Peliä pystyy kuitenkin pelaamaan tällaisen virheen sattuessa.
 
+<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/addingscore.png?raw=true" width="400">
