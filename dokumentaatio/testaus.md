@@ -8,7 +8,7 @@ Sovelluksen toimintaa on testattu JUnitilla toteutetuilla yksikkö- ja integraat
 
 Sovelluslogiikan tärkeimmän komponentin, eli pakkauksessa logic sijaitsevan luokan Grid testauksessa on käytetty useita JUnit yksikkötestejä.
 
-Pakkauksessa logic oliva luokka GameController toimii pelin ohjaimena ja ohjaajana käyttöliittymän ja luokan Grid välillä, joten sen testaaminen on hoidettu manuaalisesti. Luokan automaattista testausta vaikeuttaisi myös se, että pelissä käytetään paljon satunnaisuutta uusien laattojen luomiseen.
+Pakkauksessa logic oliva luokka GameController toimii pelin ohjaimena ja ohjaajana käyttöliittymän ja luokan Grid välillä, joten sen testaaminen on hoidettu manuaalisesti. Luokan automaattista testausta vaikeuttaisi myös se, että pelissä käytetään paljon satunnaisuutta uusien laattojen luomiseen. Luokan testaaminen testaisi myös paljolti samoja asioita kuin Grid-luokan testaus.
 
 ### DAO
 

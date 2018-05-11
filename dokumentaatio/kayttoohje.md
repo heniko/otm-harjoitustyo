@@ -20,8 +20,6 @@ Peli avautuu samaan ikkunaan main menun kanssa. Pelissä liikutaan käyttämäll
 
 Pelissä on tarkoituksena yhdistellä saman luvun omaavia laattoja liikuttelemalla niitä pelikentällä. Laattojen yhdistyessä pelaaja saa pisteitä sen mukaan, mikä uuden yhdistyneen laatan luku on. Jokaisen siirron jälkeen kentälle lisätään tyhjään paikkaan yksi uusi laatta. Peli loppuu, kun mahdollisia siirtoja ei enään ole olemassa.
 
-<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/addingscore.png" width="400">
-
 ## Tulosten lisäys
 Tulosten lisäys tapahtuu ikkunasta, joka avautuu automaattisesti pelin päätyttyä. Tulosten lisäystä varten pelaajaa pyydetään syöttämään nimi, joka esitetään huipputuloksissa tuloksen yhteydessä. Nimen tulee olla 1-30 merkkiä pitkä. Mikäli pelaaja ei halua tuloksia tallennettavaksi, voi ikkunan sulkea.
 

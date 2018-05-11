@@ -6,18 +6,32 @@ Harjoitustyön aiheena on toteuttaa peli 2048.
 
 ## Käyttäjät
 
-Kaikki käyttäjät ovat sovelluksessa normaaleja käyttäjiä.
+Kaikki käyttäjät ovat sovelluksessa normaaleja käyttäjiä. Sovellukseen ei tarvitse kirjautua, mutta käyttäjä voi halutessaan antaa käyttäjänimen huipputulosten tallennuksen yhtydessä.
 
 ## Käyttöliittymä
 
 -Aloitusruutu, josta pääsee peliin tai huipputuloksiin
+
+<img src="https://raw.githubusercontent.com/heniko/otm-harjoitustyo/master/dokumentaatio/kuvat/menu.png" width="400">
+
 -Peli
+
+<img src="https://raw.githubusercontent.com/heniko/otm-harjoitustyo/master/dokumentaatio/kuvat/game.png" width="400">
+
 -Huipputulokset
+
+<img src="https://raw.githubusercontent.com/heniko/otm-harjoitustyo/master/dokumentaatio/kuvat/highscores.png" width="400">
+
+-Huipputuloksien lisäys
+
+<img src="https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/addingscore.png" width="400">
 
 ## Toiminnallisuus
 
 -Käyttäjä voi aloittaa pelin tai halutessaan tarkastella huipputuloksia
+
 -Pelin loputtua käyttäjälle tarjotaan mahdollisuus antaa nimimerkki huipputuloksia varten
+
 -Tulokset tallennetaan tietokantaan
 
 ## Jatkokehitysideoita
