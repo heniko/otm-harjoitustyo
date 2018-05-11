@@ -6,7 +6,7 @@
 
 [Vaativuusmäärittely](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/vaarivuusmaarittely.md)
 
-[Arkkitehtuurikuvaus](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/Arkkitehtuuri.md)
 
 [Testausdokumentti](https://github.com/heniko/otm-harjoitustyo/blob/master/dokumentaatio/testaus.md)
 

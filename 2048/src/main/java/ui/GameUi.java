@@ -174,7 +174,7 @@ public class GameUi extends Application {
                     dao.addNew(new Highscore(score, userName.getText(), date));
                     addScoreStage.close();
                 } catch (SQLException e) {
-                    System.out.println(e.getMessage());
+                    usernameError.setText("Tietokannan käytössä virhe");
                 }
             }
         });
@@ -210,7 +210,7 @@ public class GameUi extends Application {
         try {
             lines = dao.getTop20();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            
         }
         //Adding each highscore
         int position = 1;

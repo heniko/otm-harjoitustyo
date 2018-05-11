@@ -21,7 +21,7 @@ public class HighscoreDao {
             s.execute();
             s.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            
         }
     }
 
