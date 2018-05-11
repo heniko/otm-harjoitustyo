@@ -15,6 +15,11 @@ public class Grid {
     private boolean mergeable[][];
     private final int size;
 
+    /**
+     *
+     * @param size Pelikentän koko
+     * @param board Pelikenttä
+     */
     public Grid(int size, int[][] board) {
         this.random = new Random();
         this.grid = board;
@@ -24,6 +29,9 @@ public class Grid {
         initializeMergeable();
     }
 
+    /**
+     * Alustaa jokaisen pelikentän ruudun luvuksi 0
+     */
     public void initializeGrid() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -32,6 +40,9 @@ public class Grid {
         }
     }
 
+    /**
+     * Alustaa mergeable ruudukon
+     */
     public void initializeMergeable() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -42,6 +53,9 @@ public class Grid {
 
     //Rotating grid clockwise
     //Rotating is done so only one method for moving tiles is needed
+    /**
+     * Kääntää pelikenttää myötäpäivään
+     */
     public void rotateGrid() {
         int oldGrid[][] = copyGrid();
         for (int y = 0; y < size; y++) {
@@ -51,13 +65,22 @@ public class Grid {
         }
     }
 
-    //Rotating grid multiple times
+    /**
+     * Kääntää pelikenttää myötäpäivään n verran
+     *
+     * @param n Kääntöjen määrä
+     */
     public void rotateNTimes(int n) {
         for (int i = 0; i < n; i++) {
             rotateGrid();
         }
     }
 
+    /**
+     * Luo kopion pelikentästä
+     *
+     * @return kopio pelikentästä
+     */
     public int[][] copyGrid() {
         int copy[][] = new int[size][size];
         for (int y = 0; y < size; y++) {
@@ -68,8 +91,11 @@ public class Grid {
         return copy;
     }
 
-    //Moving tiles to right
-    //Returns false if grid didn't change
+    /**
+     * Siirtää laattoja oikealle 2048 sääntöjen mukaisesti
+     *
+     * @return
+     */
     public boolean moveTilesLeft() {
         int beforeMoves[][] = copyGrid();
 
@@ -95,7 +121,11 @@ public class Grid {
         return gridChanged(beforeMoves);
     }
 
-    //Merging left if possible and adding scores
+    /**
+     * Yhdistää kaksi laattaa, mikäli mahdollista
+     *
+     * @param pos Yhdistettävän laatan sijainti
+     */
     public void mergeIfPossible(Position pos) {
         if (grid[pos.getY()][pos.getX()] == grid[pos.getY()][pos.getX() + 1] && mergeable[pos.getY()][pos.getX() + 1] == true) {
             grid[pos.getY()][pos.getX() + 1] = grid[pos.getY()][pos.getX() + 1] * 2;
@@ -105,6 +135,12 @@ public class Grid {
         }
     }
 
+    /**
+     * Vertaa pelikentän tilannetta ennen siirtoyritystä ja sen jälkeen
+     *
+     * @param beforeMoves Kopio pelikentästä ennen siirtoja
+     * @return True jos pelikenttä muuttui siirtoyrityksellä
+     */
     public boolean gridChanged(int[][] beforeMoves) {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
@@ -118,6 +154,11 @@ public class Grid {
         return false;
     }
 
+    /**
+     * Lista tyhjistä paikoista kentällä
+     *
+     * @return Listä tyhjistä paikoista
+     */
     public List<Position> emptyTiles() {
         List<Position> emptyTiles = new ArrayList<>();
         for (int y = 0; y < size; y++) {
@@ -130,11 +171,18 @@ public class Grid {
         return emptyTiles;
     }
 
-    //getScore for adding highscores
+    /**
+     * Palauttaa pistemäärän
+     *
+     * @return Pistemäärä
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Lisää uuden laatan tyhjään kohtaan
+     */
     public void addNewTile() {
         List<Position> emptyTiles = emptyTiles();
         shuffle(emptyTiles);
@@ -142,6 +190,13 @@ public class Grid {
         grid[emptyTiles.get(0).getY()][emptyTiles.get(0).getX()] = newTile;
     }
 
+    /**
+     * Kääntää pelikenttää niin, että laatat voidaan siirtää oikealle, siirtää
+     * laatat oikealle ja kääntää pelikentän takaisin alkuperäiseen asentoon
+     *
+     * @param direction Suunta mihin laattoja halutaan siitää
+     * @return Palauttaa tiedon siitä, tapahtuiko muutoksia siirrolla
+     */
     public boolean moveTiles(Direction direction) {
         //Rotating grid for moving tiles
         if (direction == Direction.DOWN) {
@@ -170,15 +225,29 @@ public class Grid {
         return changesHappened;
     }
 
+    /**
+     * Palauttaa pelikentän
+     *
+     * @return Pelikenttä
+     */
     public int[][] getGrid() {
         return grid;
     }
 
-    //For tests
+    /**
+     * Testejä varten luotu ruudukon pelikentän asettaminen tiettyyn tilaan
+     *
+     * @param grid Haluttu pelikenttä
+     */
     public void setGrid(int[][] grid) {
         this.grid = grid;
     }
 
+    /**
+     * Palauttaa tiedon siitä, onko siirto mihinkään suuntaan mahdollinen
+     *
+     * @return True jos peli voi jatkua
+     */
     public boolean gameEnded() {
         Grid g = new Grid(4, copyGrid());
         for (Direction d : Direction.values()) {
@@ -189,8 +258,11 @@ public class Grid {
         return true;
     }
 
+    /**
+     * Asettaa pisteet takaisin nollaan
+     */
     public void setScoreZero() {
         this.score = 0;
     }
-    
+
 }

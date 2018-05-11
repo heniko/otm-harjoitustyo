@@ -10,10 +10,19 @@ public class HighscoreDao {
 
     private Database db;
 
+    /**
+     *
+     * @param db Käytettävä tietokanta
+     */
     public HighscoreDao(Database db) {
         this.db = db;
     }
-    
+
+    /**
+     * Luo tietokantataulun tarvittaessa
+     *
+     * @throws SQLException
+     */
     public void createDatabaseAndTableIfNotExists() throws SQLException {
         String sqlCreateTable = "CREATE TABLE IF NOT EXISTS highscores(id integer PRIMARY KEY, score integer, name varchar(30), date date)";
         try (Connection conn = db.getConnection()) {
@@ -21,11 +30,16 @@ public class HighscoreDao {
             s.execute();
             s.close();
         } catch (SQLException e) {
-            
+
         }
     }
 
-    //Tuloksien lisäys
+    /**
+     * Uuden tuloksen lisäys tietokantaan
+     *
+     * @param score Highscore-olio
+     * @throws SQLException
+     */
     public void addNew(Highscore score) throws SQLException {
         Connection conn = db.getConnection();
         PreparedStatement s = conn.prepareStatement("INSERT INTO highscores (score, name, date) VALUES (?, ?, ?)");
@@ -38,6 +52,11 @@ public class HighscoreDao {
         conn.close();
     }
 
+    /**
+     *
+     * @return Lista top20-tuloksista
+     * @throws SQLException
+     */
     public List<Highscore> getTop20() throws SQLException {
         List<Highscore> scores = new ArrayList<>();
 

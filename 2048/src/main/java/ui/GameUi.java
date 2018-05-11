@@ -133,7 +133,9 @@ public class GameUi extends Application {
         stage.show();
     }
 
-    //Changing tile values and styles
+    /**
+     * Updates label styles and values
+     */
     public void updateGameGrid() {
         TileStyle ts = new TileStyle();
         for (int y = 0; y < 4; y++) {
@@ -144,7 +146,9 @@ public class GameUi extends Application {
         }
     }
 
-    //Creating new stage for adding score
+    /**
+     * Creates new stage for adding score
+     */
     public void newHighscore(int score) {
         Date date = new Date(System.currentTimeMillis());
         Stage addScoreStage = new Stage();
@@ -184,6 +188,9 @@ public class GameUi extends Application {
         addScoreStage.show();
     }
 
+    /*
+    *Creates new stage for showing top20 scores
+     */
     public void showTop20() {
         //Style for lines is used to make highscores easier to read
         String[] styles = {
@@ -210,7 +217,7 @@ public class GameUi extends Application {
         try {
             lines = dao.getTop20();
         } catch (SQLException e) {
-            
+
         }
         //Adding each highscore
         int position = 1;

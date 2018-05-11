@@ -9,11 +9,18 @@ public class GameController {
     private Grid grid;
     private boolean gameRunning;
 
+    /**
+     *
+     * @param board Peliruudukko jossa tieto pelin tilasta säilytetään
+     */
     public GameController(int[][] board) {
         this.grid = new Grid(4, board);
         gameRunning = true;
     }
 
+    /**
+     * Alustaa pelin
+     */
     public void initializeGame() {
         grid.initializeGrid();
         grid.setScoreZero();
@@ -23,6 +30,12 @@ public class GameController {
         gameRunning = true;
     }
 
+    /**
+     * Siirto näppäinpainalluksen perusteella
+     *
+     * @param event Painettu näppäin
+     * @return
+     */
     public boolean move(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             gameRunning = false;
@@ -38,11 +51,19 @@ public class GameController {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean gameIsRunning() {
         return gameRunning;
     }
 
-    //Return false if game ended
+    /**
+     *
+     * @param dir Suunta, johon laattoja liikutetaan
+     * @return Palauttaa false jos peli on loppunut
+     */
     public boolean move(Direction dir) {
         boolean moveHappened = grid.moveTiles(dir);
         if (moveHappened) {
@@ -54,7 +75,12 @@ public class GameController {
     public int[][] getGrid() {
         return grid.getGrid();
     }
-    
+
+    /**
+     * Metodi pistemäärän hakemiseen Gridistä
+     *
+     * @return Palauttaa pistemäärän
+     */
     public int getScore() {
         return grid.getScore();
     }
