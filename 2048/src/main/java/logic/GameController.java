@@ -16,6 +16,7 @@ public class GameController {
 
     public void initializeGame() {
         grid.initializeGrid();
+        grid.setScoreZero();
         //Two tiles are added in the beginning
         grid.addNewTile();
         grid.addNewTile();

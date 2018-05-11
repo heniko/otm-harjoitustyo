@@ -188,4 +188,9 @@ public class Grid {
         }
         return true;
     }
+
+    public void setScoreZero() {
+        this.score = 0;
+    }
+    
 }
